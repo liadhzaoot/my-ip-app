@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  client:
+    build:
+      context: ./client/my-ip-client
+    ports:
+      - "3002:3002"
+  nodeserver:
+    build:
+      context: ./app
+    expose:
+      - "3000"
+    ports:
+      - "3000:3000"
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
